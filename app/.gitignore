@@ -1,1 +1,9 @@
-/build
+.gradle
+.idea
+.idea/workspace.xml
+.DS_Store
+app/keystore/orcp_keystore.jks
+local.properties
+build
+app/keystore/keystore.password
+*.iml
