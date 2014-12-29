@@ -15,8 +15,8 @@ import java.util.List;
  */
 public abstract class MultiRecyclerAdapter extends RecyclerView.Adapter<BasicViewHolder> {
 
-    protected Context mContext;
-    protected LayoutInflater mInflater;
+    private Context mContext;
+    private LayoutInflater mInflater;
     public MultiRecyclerAdapter(Context context) {
         mContext = context;
         mInflater = LayoutInflater.from(mContext);
@@ -41,12 +41,12 @@ public abstract class MultiRecyclerAdapter extends RecyclerView.Adapter<BasicVie
 
     public void addRowOnTop(Object item, int viewType) {
         mRows.add(0, new Row(item, viewType));
-        notifyDataSetChanged();
+        notifyItemInserted(0);
     }
 
     public void addRow(Object item, int viewType) {
         mRows.add(new Row(item, viewType));
-        notifyDataSetChanged();
+        notifyItemInserted(mRows.size() - 1);
     }
 
     public void removeRow(int position) {
@@ -94,6 +94,15 @@ public abstract class MultiRecyclerAdapter extends RecyclerView.Adapter<BasicVie
     @Override
     public int getItemViewType(int position) {
         return mRows.get(position).getItemViewType();
+    }
+
+
+    public Context getContext() {
+        return mContext;
+    }
+
+    public LayoutInflater getLayoutInflater() {
+        return mInflater;
     }
 
     public static class Row {

@@ -15,8 +15,8 @@ import java.util.List;
  */
 public abstract class BasicRecyclerAdapter<T> extends RecyclerView.Adapter {
 
-    protected Context mContext;
-    protected LayoutInflater mInflater;
+    private Context mContext;
+    private LayoutInflater mInflater;
     public BasicRecyclerAdapter(Context context) {
         mContext = context;
         mInflater = LayoutInflater.from(mContext);
@@ -28,36 +28,23 @@ public abstract class BasicRecyclerAdapter<T> extends RecyclerView.Adapter {
         setItems(items);
     }
 
-    protected List<T> mItems;
+    private List<T> mItems = new ArrayList<>();
     public void setItems(List<T> items){
         mItems = items;
         notifyDataSetChanged();
     }
 
     public void addItems(List<T> items) {
-        if (mItems == null) {
-            setItems(items);
-            return;
-        }
-
         mItems.addAll(items);
         notifyDataSetChanged();
     }
 
     public void addItemsOnTop(List<T> items) {
-        if (mItems == null) {
-            setItems(items);
-            return;
-        }
-
         mItems.addAll(0, items);
         notifyDataSetChanged();
     }
 
     public void addItem(T item) {
-        if (mItems == null) {
-            mItems = new ArrayList<T>();
-        }
         mItems.add(item);
         notifyItemInserted(mItems.size() - 1);
     }
@@ -89,7 +76,20 @@ public abstract class BasicRecyclerAdapter<T> extends RecyclerView.Adapter {
     }
 
     public T getItem(int position) {
-        return getItemCount() > position ? mItems.get(position) : null;
+        int max = mItems.size();
+        return max > position ? mItems.get(position) : null;
+    }
+
+    public Context getContext() {
+        return mContext;
+    }
+
+    public LayoutInflater getLayoutInflater() {
+        return mInflater;
+    }
+
+    public List<T> getItems() {
+        return mItems;
     }
 
 }

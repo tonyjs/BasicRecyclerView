@@ -67,8 +67,13 @@ public class MainActivity extends ActionBarActivity
     @Override
     public void onNavigationDrawerItemSelected(int position) {
         FragmentManager fragmentManager = getSupportFragmentManager();
+        Fragment fragment = PlaceholderFragment.newInstance(position + 1);
+        if (position == 2) {
+            fragment = new InfiniteFragment();
+        }
+
         fragmentManager.beginTransaction()
-                .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
+                .replace(R.id.container, fragment)
                 .commit();
     }
 
