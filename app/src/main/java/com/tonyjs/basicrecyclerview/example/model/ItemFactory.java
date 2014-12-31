@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /**
  * Created by tony on 14. 12. 29..
  */
-public class Sample {
+public class ItemFactory {
     public static final String[] DATA =
             ("allin ball calculator dog facebook google hashtagram instagram jake wharton"
                     + " korea lolipop man nineold orc pushbullet quip recyclerview sliplayout trello"

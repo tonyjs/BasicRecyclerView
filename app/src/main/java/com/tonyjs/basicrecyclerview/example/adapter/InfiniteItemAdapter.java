@@ -13,7 +13,7 @@ import com.tonyjs.basicrecyclerview.example.model.Item;
 /**
  * Created by tony on 14. 12. 29..
  */
-public class InfiniteAdapter extends BasicRecyclerAdapter<Item>{
+public class InfiniteItemAdapter extends BasicRecyclerAdapter<Item>{
     public interface OnReachDownListener {
         public void onReachDown();
     }
@@ -21,7 +21,7 @@ public class InfiniteAdapter extends BasicRecyclerAdapter<Item>{
     public static final int VIEW_TYPE_ITEM = 0;
     public static final int VIEW_TYPE_PROGRESS = 1;
 
-    public InfiniteAdapter(Context context) {
+    public InfiniteItemAdapter(Context context) {
         super(context);
     }
 

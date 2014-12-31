@@ -1,13 +1,9 @@
 package com.tonyjs.basicrecyclerview.example;
 
 import android.app.Activity;
-import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
@@ -17,12 +13,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
-import android.widget.ArrayAdapter;
-import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity
-        implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+        implements NavigationDrawerFragment.NavigationDrawerCallbacks,
+                    BaseFragment.Callback{
 
     private NavigationDrawerFragment mNavigationDrawerFragment;
 
@@ -50,12 +46,6 @@ public class MainActivity extends ActionBarActivity
         mNavigationDrawerFragment.setUp(R.id.navigation_drawer, mDrawerLayout);
     }
 
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-//        mToolbar.setTitle("Hello World!");
-    }
-
     private Toolbar mToolbar;
     public Toolbar getToolbar() {
         if (mToolbar == null) {
@@ -67,26 +57,35 @@ public class MainActivity extends ActionBarActivity
     @Override
     public void onNavigationDrawerItemSelected(int position) {
         FragmentManager fragmentManager = getSupportFragmentManager();
-        Fragment fragment = PlaceholderFragment.newInstance(position + 1);
-        if (position == 2) {
-            fragment = new InfiniteFragment();
+        Fragment fragment = null;
+        switch (position) {
+            case 0:
+                fragment = new SimpleItemFragment();
+                break;
+            case 1:
+                fragment = new MultiItemFragment();
+                break;
+            case 2:
+                fragment = new InfiniteItemFragment();
+                break;
         }
-
         fragmentManager.beginTransaction()
                 .replace(R.id.container, fragment)
                 .commit();
     }
 
+    @Override
     public void onSectionAttached(int number) {
         String title = getString(R.string.title_section1);
         switch (number) {
-            case 2:
+            case 1:
                 title = getString(R.string.title_section2);
                 break;
-            case 3:
+            case 2:
                 title = getString(R.string.title_section3);
                 break;
         }
+
         mToolbar.setTitle(title);
     }
 
@@ -107,33 +106,8 @@ public class MainActivity extends ActionBarActivity
         return super.onOptionsItemSelected(item);
     }
 
-    public static class PlaceholderFragment extends Fragment {
-        private static final String ARG_SECTION_NUMBER = "section_number";
-
-        public static PlaceholderFragment newInstance(int sectionNumber) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        public PlaceholderFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            return rootView;
-        }
-
-        @Override
-        public void onAttach(Activity activity) {
-            super.onAttach(activity);
-            ((MainActivity) activity).onSectionAttached(
-                    getArguments().getInt(ARG_SECTION_NUMBER));
-        }
-    }
-
+//    @Override
+//    public void onActivityCreated(int position) {
+//        onSectionAttached(position);
+//    }
 }

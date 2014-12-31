@@ -17,7 +17,7 @@ public class ItemHolder extends BasicViewHolder<Item> {
 
     public static ItemHolder getViewHolder(Context context, ViewGroup parent) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        return new ItemHolder(context, inflater.inflate(R.layout.item_1, parent, false));
+        return new ItemHolder(context, inflater.inflate(R.layout.row_item, parent, false));
     }
 
     TextView mTvType;
@@ -31,7 +31,6 @@ public class ItemHolder extends BasicViewHolder<Item> {
 
     @Override
     public void onBindView(Item item) {
-//        mTvType.setText(Integer.toString(item.getType()));
         mTvType.setText(Integer.toString(getPosition()));
         mTvTitle.setText(item.getTitle());
     }

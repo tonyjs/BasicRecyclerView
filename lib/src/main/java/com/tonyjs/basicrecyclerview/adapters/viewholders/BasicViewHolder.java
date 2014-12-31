@@ -14,11 +14,6 @@ public abstract class BasicViewHolder<T> extends RecyclerView.ViewHolder{
         mContext = context;
     }
 
-    public void onBindView(){}
-
-    public void onBindView(final int position){}
-
     public void onBindView(final T item){}
 
-    public void onBindView(final T item, final int position){}
 }

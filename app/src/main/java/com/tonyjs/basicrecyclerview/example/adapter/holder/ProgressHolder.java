@@ -24,7 +24,4 @@ public class ProgressHolder extends BasicViewHolder<Item> {
         super(context, itemView);
     }
 
-    @Override
-    public void onBindView(Item item) {
-    }
 }

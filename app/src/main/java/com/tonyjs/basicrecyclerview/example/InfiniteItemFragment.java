@@ -10,28 +10,29 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.tonyjs.basicrecyclerview.BasicRecyclerView;
-import com.tonyjs.basicrecyclerview.example.adapter.InfiniteAdapter;
-import com.tonyjs.basicrecyclerview.example.model.Sample;
+import com.tonyjs.basicrecyclerview.example.adapter.InfiniteItemAdapter;
+import com.tonyjs.basicrecyclerview.example.model.ItemFactory;
 
 /**
  * Created by tony on 14. 12. 29..
  */
-public class InfiniteFragment extends Fragment
-            implements InfiniteAdapter.OnReachDownListener{
+public class InfiniteItemFragment extends BaseFragment
+            implements InfiniteItemAdapter.OnReachDownListener{
 
     private BasicRecyclerView mRecycler;
     private LinearLayoutManager mLayoutManager;
     private View mProgress;
-    private InfiniteAdapter mAdapter;
+    private InfiniteItemAdapter mAdapter;
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_infinite, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_recycler, container, false);
         mProgress = rootView.findViewById(R.id.progress);
+        mProgress.setVisibility(View.VISIBLE);
         mRecycler = (BasicRecyclerView) rootView.findViewById(R.id.recycler);
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecycler.setLayoutManager(mLayoutManager);
-        mAdapter = new InfiniteAdapter(getActivity());
+        mAdapter = new InfiniteItemAdapter(getActivity());
         mAdapter.setOnReachDownListener(this);
         mRecycler.setAdapter(mAdapter);
         return rootView;
@@ -59,7 +60,7 @@ public class InfiniteFragment extends Fragment
     private int mIndex = 0;
 
     public void handleItems(int mIndex) {
-        mAdapter.addItems(Sample.getItems(mIndex));
+        mAdapter.addItems(ItemFactory.getItems(mIndex));
         if (mProgress.getVisibility() != View.GONE) {
             mProgress.setVisibility(View.GONE);
         }
@@ -80,5 +81,10 @@ public class InfiniteFragment extends Fragment
             return;
         }
         requestMoreItems();
+    }
+
+    @Override
+    public int getPosition() {
+        return 2;
     }
 }

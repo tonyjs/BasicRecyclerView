@@ -82,10 +82,7 @@ public abstract class MultiRecyclerAdapter extends RecyclerView.Adapter<BasicVie
 
     public abstract BasicViewHolder getViewHolder(ViewGroup parent, int viewType);
 
-    @Override
-    public void onBindViewHolder(BasicViewHolder holder, int position) {
-        holder.onBindView(getItem(position), position);
-    }
+    public abstract void onBindViewHolder(BasicViewHolder viewHolder, int position);
 
     public Object getItem(int position) {
         return getItemCount() > position ? mRows.get(position).getItem() : null;
