@@ -38,11 +38,6 @@ public class MultiItemAdapter extends MultiRecyclerAdapter{
         }
     }
 
-    @Override
-    public void onBindViewHolder(BasicViewHolder viewHolder, int position) {
-        viewHolder.onBindView(getItem(position));
-    }
-
     public void setItems(List<Item> items) {
         Collections.sort(items, new Comparator<Item>() {
             @Override

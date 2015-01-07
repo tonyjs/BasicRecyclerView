@@ -43,7 +43,7 @@ public class InfiniteItemAdapter extends BasicRecyclerAdapter<Item>{
 
     @Override
     public void onBindViewHolder(BasicViewHolder viewHolder, int position) {
-        viewHolder.onBindView(getItem(position));
+        super.onBindViewHolder(viewHolder, position);
         int size = getItems().size();
         if (mOnReachDownListener != null && position == size - 3) {
             mOnReachDownListener.onReachDown();

@@ -20,9 +20,4 @@ public class SimpleItemAdapter extends BasicRecyclerAdapter<Item>{
     public BasicViewHolder getViewHolder(ViewGroup parent, int viewType) {
         return ItemHolder.getViewHolder(getContext(), parent);
     }
-
-    @Override
-    public void onBindViewHolder(BasicViewHolder viewHolder, int position) {
-        viewHolder.onBindView(getItem(position));
-    }
 }
