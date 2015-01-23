@@ -65,6 +65,10 @@ public abstract class MultiRecyclerAdapter extends RecyclerView.Adapter<BasicVie
         return new Row(item, viewType);
     }
 
+    public Row getRow(int position) {
+        return getItemCount() > position ? mRows.get(position) : null;
+    }
+
     @Override
     public int getItemCount() {
         return mRows != null ? mRows.size() : 0;
@@ -95,7 +99,6 @@ public abstract class MultiRecyclerAdapter extends RecyclerView.Adapter<BasicVie
     public int getItemViewType(int position) {
         return mRows.get(position).getItemViewType();
     }
-
 
     public Context getContext() {
         return mContext;
