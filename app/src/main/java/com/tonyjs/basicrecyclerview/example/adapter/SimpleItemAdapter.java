@@ -3,8 +3,8 @@ package com.tonyjs.basicrecyclerview.example.adapter;
 import android.content.Context;
 import android.view.ViewGroup;
 
-import com.tonyjs.basicrecyclerview.adapters.BasicRecyclerAdapter;
-import com.tonyjs.basicrecyclerview.adapters.viewholders.BasicViewHolder;
+import com.tonyjs.basicrecyclerview.adapter.BasicRecyclerAdapter;
+import com.tonyjs.basicrecyclerview.adapter.viewholder.BasicViewHolder;
 import com.tonyjs.basicrecyclerview.example.adapter.holder.ItemHolder;
 import com.tonyjs.basicrecyclerview.example.model.Item;
 
@@ -17,7 +17,7 @@ public class SimpleItemAdapter extends BasicRecyclerAdapter<Item>{
     }
 
     @Override
-    public BasicViewHolder getViewHolder(ViewGroup parent, int viewType) {
+    public BasicViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return ItemHolder.getViewHolder(getContext(), parent);
     }
 }

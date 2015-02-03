@@ -3,11 +3,9 @@ package com.tonyjs.basicrecyclerview.example.adapter;
 import android.content.Context;
 import android.view.ViewGroup;
 
-import com.tonyjs.basicrecyclerview.adapters.BasicRecyclerAdapter;
-import com.tonyjs.basicrecyclerview.adapters.MultiRecyclerAdapter;
-import com.tonyjs.basicrecyclerview.adapters.viewholders.BasicViewHolder;
+import com.tonyjs.basicrecyclerview.adapter.MultiRecyclerAdapter;
+import com.tonyjs.basicrecyclerview.adapter.viewholder.BasicViewHolder;
 import com.tonyjs.basicrecyclerview.example.adapter.holder.ItemHolder;
-import com.tonyjs.basicrecyclerview.example.adapter.holder.ProgressHolder;
 import com.tonyjs.basicrecyclerview.example.adapter.holder.TitleHolder;
 import com.tonyjs.basicrecyclerview.example.model.Item;
 
@@ -19,7 +17,7 @@ import java.util.List;
 /**
  * Created by tony on 14. 12. 29..
  */
-public class MultiItemAdapter extends MultiRecyclerAdapter{
+public class MultiItemAdapter extends MultiRecyclerAdapter {
 
     public static final int VIEW_TYPE_TITLE = 0;
     public static final int VIEW_TYPE_ITEM = 1;
@@ -29,7 +27,7 @@ public class MultiItemAdapter extends MultiRecyclerAdapter{
     }
 
     @Override
-    public BasicViewHolder getViewHolder(ViewGroup parent, int viewType) {
+    public BasicViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         switch (viewType) {
             case VIEW_TYPE_TITLE:
                 return TitleHolder.getViewHolder(getContext(), parent);

@@ -1,11 +1,9 @@
-package com.tonyjs.basicrecyclerview.adapters;
+package com.tonyjs.basicrecyclerview.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
 
-import com.tonyjs.basicrecyclerview.adapters.viewholders.BasicViewHolder;
+import com.tonyjs.basicrecyclerview.adapter.viewholder.BasicViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,16 +14,17 @@ import java.util.List;
 public abstract class MultiRecyclerAdapter extends RecyclerView.Adapter<BasicViewHolder> {
 
     private Context mContext;
-    private LayoutInflater mInflater;
     public MultiRecyclerAdapter(Context context) {
         mContext = context;
-        mInflater = LayoutInflater.from(mContext);
     }
 
     private List<Row> mRows = new ArrayList<>();
 
     public void setRows(List<Row> rows){
-        mRows = rows;
+        mRows.clear();
+        if (rows != null && !rows.isEmpty()) {
+            mRows.addAll(rows);
+        }
         notifyDataSetChanged();
     }
 
@@ -71,7 +70,7 @@ public abstract class MultiRecyclerAdapter extends RecyclerView.Adapter<BasicVie
 
     @Override
     public int getItemCount() {
-        return mRows != null ? mRows.size() : 0;
+        return mRows.size();
     }
 
     @Override
@@ -79,16 +78,10 @@ public abstract class MultiRecyclerAdapter extends RecyclerView.Adapter<BasicVie
         return position;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
-    public BasicViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return getViewHolder(parent, viewType);
-    }
-
-    public abstract BasicViewHolder getViewHolder(ViewGroup parent, int viewType);
-
-    @Override
-    public void onBindViewHolder(BasicViewHolder viewHolder, int position){
-        viewHolder.onBindView(getItem(position));
+    public void onBindViewHolder(BasicViewHolder holder, int position) {
+        holder.onBindView(getItem(position));
     }
 
     public Object getItem(int position) {
@@ -102,10 +95,6 @@ public abstract class MultiRecyclerAdapter extends RecyclerView.Adapter<BasicVie
 
     public Context getContext() {
         return mContext;
-    }
-
-    public LayoutInflater getLayoutInflater() {
-        return mInflater;
     }
 
     public static class Row {

@@ -1,4 +1,4 @@
-package com.tonyjs.basicrecyclerview.adapters.viewholders;
+package com.tonyjs.basicrecyclerview.adapter.viewholder;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -7,8 +7,9 @@ import android.view.View;
 /**
  * Created by tony.park on 14. 11. 6..
  */
-public abstract class BasicViewHolder<T> extends RecyclerView.ViewHolder{
+public abstract class BasicViewHolder<T> extends RecyclerView.ViewHolder {
     private Context mContext;
+
     public BasicViewHolder(Context context, View itemView) {
         super(itemView);
         mContext = context;
@@ -18,6 +19,6 @@ public abstract class BasicViewHolder<T> extends RecyclerView.ViewHolder{
         return mContext;
     }
 
-    public void onBindView(final T item){}
+    public abstract void onBindView(final T item);
 
 }
