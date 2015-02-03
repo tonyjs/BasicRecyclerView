@@ -5,7 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import com.tonyjs.basicrecyclerview.adapters.viewholders.BasicViewHolder;
+import com.tonyjs.basicrecyclerview.adapter.viewholder.BasicViewHolder;
 import com.tonyjs.basicrecyclerview.example.R;
 
 /**

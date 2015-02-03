@@ -1,11 +1,11 @@
-package com.tonyjs.basicrecyclerview.adapters;
+package com.tonyjs.basicrecyclerview.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.tonyjs.basicrecyclerview.adapters.viewholders.BasicViewHolder;
+import com.tonyjs.basicrecyclerview.adapter.viewholder.BasicViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,10 @@ public abstract class MultiRecyclerAdapter extends RecyclerView.Adapter<BasicVie
     private List<Row> mRows = new ArrayList<>();
 
     public void setRows(List<Row> rows){
-        mRows = rows;
+        mRows.clear();
+        if (rows != null && !rows.isEmpty()) {
+            mRows.addAll(rows);
+        }
         notifyDataSetChanged();
     }
 

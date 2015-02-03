@@ -1,4 +1,4 @@
-package com.tonyjs.basicrecyclerview.adapters.viewholders;
+package com.tonyjs.basicrecyclerview.adapter.viewholder;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

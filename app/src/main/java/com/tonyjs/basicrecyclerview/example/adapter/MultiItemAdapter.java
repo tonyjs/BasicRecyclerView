@@ -3,11 +3,9 @@ package com.tonyjs.basicrecyclerview.example.adapter;
 import android.content.Context;
 import android.view.ViewGroup;
 
-import com.tonyjs.basicrecyclerview.adapters.BasicRecyclerAdapter;
-import com.tonyjs.basicrecyclerview.adapters.MultiRecyclerAdapter;
-import com.tonyjs.basicrecyclerview.adapters.viewholders.BasicViewHolder;
+import com.tonyjs.basicrecyclerview.adapter.MultiRecyclerAdapter;
+import com.tonyjs.basicrecyclerview.adapter.viewholder.BasicViewHolder;
 import com.tonyjs.basicrecyclerview.example.adapter.holder.ItemHolder;
-import com.tonyjs.basicrecyclerview.example.adapter.holder.ProgressHolder;
 import com.tonyjs.basicrecyclerview.example.adapter.holder.TitleHolder;
 import com.tonyjs.basicrecyclerview.example.model.Item;
 
